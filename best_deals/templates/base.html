@@ -1,0 +1,48 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+      
+
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Let's Talk Business</title>
+    {% endif %}
+
+    {% block styles %}
+    {% bootstrap_css %}
+    
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% endblock %}
+
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+
+  <body>
+    {% include 'navbar.html' %}
+    {% block content %}
+
+    {% endblock %}
+
+    {% block scripts %}
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
+    {% endblock %}
+  </body>
+</html>
+<style>
+  body{
+   
+    font-family: 'Black Ops One', cursive;
+    font-size: 20px;
+    
+  }
+
+</style>

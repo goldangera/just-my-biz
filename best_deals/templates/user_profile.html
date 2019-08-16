@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row top">
+    <div class="col-md-12"></div>
+  </div>
+<div class="row">
+    {%for profile in profiles%}
+
+<div class="text-center">
+  <div class="user-image">
+    <img src="{{profile.avatar.url}}" class="gallery-image" alt=""  width=30 height=30>
+  </div>
+  <p style="font-size: 35px; font-weight:bold;margin:auto; padding:2px;">{{profile.username}}</p>
+  <p class="card-text" style="font-size:20px;font-weight:bold;">{{profile.description |safe}}</p>
+  <p class="card-text" style="font-size:18px;color:white;font-weight:bold;">Email: {{profile.email}}</p>
+
+</div>
+{%endfor%}
+
+</div>
+</div>
+<style>
+  body{
+    background-image: url('https://cdn.pixabay.com/photo/2015/07/28/22/01/office-865091__340.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+ 
+
+.top{
+  margin-top: 10px;
+}
+h5{
+  font-size: 30px;
+  text-align: center;
+}
+h6{
+  text-align: center;
+}
+.user-image {
+  
+    border-radius: 50%;
+    display: inline-flex;
+}
+p{
+  color: white;
+}
+.user-image img {
+  width: 205px;
+  height: 205px;
+  background-size: cover;
+  display: block;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+}
+</style>
+{% endblock %}

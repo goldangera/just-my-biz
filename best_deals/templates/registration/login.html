@@ -1,0 +1,65 @@
+{%extends "registration/base.html"%}
+{% load bootstrap3 %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      {% if form.errors %}
+        <p> Password or Username is incorrect.Check again</p>
+      {% endif %}
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="text-center"><em>Sign In</em></h3>
+        </div>
+        <div class="panel-body">
+
+          <form  action="/accounts/login/" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-danger btn-sm" value="Login">
+            </div>
+
+            <input type="hidden" name="next" value="{{next}}">
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body text-center">
+        <p class='r'> Don't have  an account?First<span><a class="" href="/accounts/register">Sign Up</a></span></p>
+      </div>
+    </div>
+
+  </div>
+   
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+{% endblock %}
+<style>
+  body{
+    font-size: 40px;
+  }
+  .r{
+    color:red;
+  }
+  h3{
+    color:rgb(233, 12, 85);
+  }
+  p{
+    color: rgb(245, 6, 85);
+  }
+
+
+</style>
