@@ -10,6 +10,7 @@ urlpatterns=[
     url(r'^businesses',views.businesses, name='businesses'),
     url(r'^new/business$',views.new_business, name='new-business'),
     url(r'^update/profile$',views.update_profile, name='update-profile'),
+    url(r'searchh',views.search,name='search'),
    
    
     
