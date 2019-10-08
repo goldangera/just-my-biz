@@ -94,3 +94,12 @@ def update_profile(request):
         form = ProfileForm()
 
     return render(request,'update_profile.html',{"form":form})
+
+def search(request):
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
+        searched_businesses = Business.search_by_category(search_term)
+    return render(request,'search.html',{"businesses":searched_businesses,"category":search_term})
+
+    
+    
