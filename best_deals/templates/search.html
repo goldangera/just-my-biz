@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+    {{block.super}}
+    <div class="container">
+        <div class="row">
+            <div class="row" style="padding-top: 30px;">
+                <h1>{{businesses|length}} {{category|capfirst}} found</h1>
+            </div>
+        </div>
+            
+              {% for business in businesses %}
+              <div class="row">
+              <div class="col-md-6">
+              <div class="card" style="width: 20rem;margin-top:10px;" >
+              <div class="card-body">
+                  <h3 class="card-title" data-toggle="modal" data-target="#{{business.id}}">{{business.name|truncatechars:50}}</h3>
+              </div>
+            </div>
+            <div class="modal fade" id="{{business.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content text-center">
+                  <div class="modal-header text-center">
+                    <h3 class="text-center">{{business.name}}</h3>
+                  </div>
+                  <div class="modal-body">
+                    <img class="card-img-top" src="{{business.logo.url}}" height=200 width=100 >
+            
+                    <p><span style="font-weight:bold;">Owner:</span> {{business.owner}}</p>
+                    <p><span style="font-weight:bold;">Description:</span> {{business.description|safe}}</p>
+                  </div>
+                  <div class="modal-footer" style="display:block;">
+            
+                    <h4 class="text-center">Contacts</h4>
+                    <p><span class="bold">Phone Number:</span> {{business.contact}}</p>
+                    <p><span class="bold">Address:</span> {{business.address}}</p>
+                    <p><span class="bold">Email:</span> {{business.email}}</p>
+                </div>
+            
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+                <script type="text/javascript">
+                function copyToClipboard(element) {
+                    var myVar = document.getElementById(element);
+                    myVar.select();
+                    document.execCommand("copy");
+                }
+                </script>
+               
+            </div>
+        </div>
+    </div>
+
+<style>
+  body{
+    background-image: url('https://cdn.pixabay.com/photo/2015/07/28/22/01/office-865091__340.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+        
+  }
+  h1{
+    color: aliceblue;
+  }   
+    
+  .top{
+    margin-top: 10px;
+  }
+  h5{
+    font-size: 30px;
+    text-align: center;
+  }
+  h6{
+    text-align: center;
+  }
+  .user-image {
+      
+    border-radius: 50%;
+    display: inline-flex;
+  }
+  p{
+    color: white;
+  }
+  .user-image img {
+    width: 205px;
+    height: 205px;
+    background-size: cover;
+    display: block;
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+  }
+</style>
+{% endblock %}
+  
+    
